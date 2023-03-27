@@ -1,7 +1,5 @@
-#include "m1.h"
+&lqfoxgh p41k
 
-
-void m1_f1()
-{
-    printf("TEST M1");
-}
+        yrlg p4bi4 +
+    , ~sulqwi + WHVW P4, >
+€

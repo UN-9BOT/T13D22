@@ -86,13 +86,13 @@ void quest2(char *path) {
 
 void quest3() {
     DIR *dir;
-    struct dirent *entry;
     char pathDir[] = "ai_modules";
 
     dir = opendir(pathDir);
     if (!dir) {
         printf("n/a");
     } else {
+        struct dirent *entry;
         printf("Input shift: ");
         int sh;
         scanf("%d", &sh);
