@@ -18,13 +18,13 @@ int main(void) {
 
 void choice(int n, int *flag) {
     switch (n) {
-        case 1 :
+        case 1:
             openFile();
             break;
-        case -1 :
+        case -1:
             *flag = 1;
             break;
-        default :
+        default:
             printf("n/a\n");
     }
 }
@@ -45,7 +45,6 @@ void openFile() {
                 putchar(ch);
             }
         }
-    fclose(fp);
+        fclose(fp);
     }
 }
-
