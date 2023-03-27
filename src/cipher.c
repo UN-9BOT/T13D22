@@ -1,51 +1,48 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-void choice(int n, int *flag, char path[255], int* flagP);
-void openFile(char path[255], int* flagP);
-void appendFile(char path[255]);
+void choice(int n, int *flag, char *path);
+void quest1(char *path);
+void quest2(char *path);
+
 int main(void) {
     int n, trash;
-    int flag = 0;
-    int flagP = 0;
-    char path[255];
-    while (flag == 0) {
+    int flag = 1;
+    char *path = malloc(sizeof(char) * 255);
+    while (flag) {
         if (scanf("%d.%d", &n, &trash) != 1) {
             printf("n/a\n");
             rewind(stdin);
         } else {
-            choice(n, &flag, path, &flagP);
+            choice(n, &flag, path);
         }
     }
     return (0);
 }
 
-void choice(int n, int *flag, char path[255], int *flagP) {
+void choice(int n, int *flag, char *path) {
     switch (n) {
         case 1:
-            openFile(path, flagP);
-            break;
-        case -1:
-            *flag = 1;
+            scanf("%254s", path);
+            quest1(path);
             break;
         case 2:
-            if (*flagP == 1) {
-                appendFile(path);
-            } else {
-                printf("n/a\n");
-            }
+            quest2(path);
+            break;
+        case -1:
+            *flag = 0;
             break;
         default:
             printf("n/a\n");
     }
 }
 
-void openFile(char path[255], int* flagP) {
+void quest1(char *path) {
     FILE *fp;
     if ((fp = fopen(path, "r")) == NULL) {
         printf("n/a\n");
     } else {
         char ch;
-        *flagP = 1;
         if ((ch = fgetc(fp)) == EOF) {
             printf("n/a\n");
         } else {
@@ -55,5 +52,25 @@ void openFile(char path[255], int* flagP) {
             }
         }
         fclose(fp);
+    }
+}
+
+void quest2(char *path) {
+    FILE *fp;
+    if ((fp = fopen(path, "r")) == NULL) {
+        printf("n/a\n");
+    } else {
+        char ch;
+        fclose(fp);
+        fp = fopen(path, "a");
+        rewind(stdin);
+        while ((ch = getchar()) != '\n') {
+            fputc(ch, fp);
+        }
+        fclose(fp);
+        fp = fopen(path, "r");
+        while ((ch = fgetc(fp)) != EOF) {
+            putchar(ch);
+        }
     }
 }

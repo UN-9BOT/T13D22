@@ -5,8 +5,8 @@ B=../build
 all: cipher
 
 cipher: 
-	@$(G) cipher.c -o $(B)/cipher
+	$(G) cipher.c -o $(B)/cipher
 
 clean:
-	@rm -rf $(B)/*
+	rm -rf $(B)/*
 
