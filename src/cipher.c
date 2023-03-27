@@ -17,6 +17,7 @@ int main(void) {
             choice(n, &flag, path);
         }
     }
+    free(path);
     return (0);
 }
 
